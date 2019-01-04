@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Shadows Into Light", cursive;
 }
 
 body {
@@ -28,6 +28,11 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: darkgrey;
+}
+
+h2 {
+  font-family: "ZCOOL KuaiLe", cursive;
 }
 
 li,
@@ -41,7 +46,6 @@ h2 {
   margin: 0;
   text-transform: uppercase;
   font-size: var(--font-size-large);
-  margin: 0;
 }
 
 h1 {
@@ -65,22 +69,11 @@ button {
 /* Add click effect */
 
 .key:hover {
-  background-color: darkgrey;
+  background-color: grey;
 }
 
 .key:active {
-  background-color: darkgrey;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-/* Add click effect for keyboard */
-.key_hover {
-  background-color: darkgrey;
-}
-
-.key_active {
-  background-color: darkgrey;
+  background-color: grey;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -123,7 +116,7 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
-  background: var(--color-neutral-light);
+  background-color: #fff;
   border-radius: 5px;
 }
 
@@ -133,7 +126,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: limegreen;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -152,7 +145,7 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: limegreen;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #fff;
@@ -162,7 +155,7 @@ button {
 }
 
 .wrong {
-  background: #f7a964;
+  background: darkorange;
   color: #fff;
 
   /* Change pointer */
@@ -192,7 +185,7 @@ button {
   display: flex;
   flex-direction: column;
   position: fixed;
-  color: #ffffff;
+  color: #fff;
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -227,4 +220,20 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+/* Add spinning effect to showMatchedLetter */
+.spin {
+  transition: 0.5s;
+  transform: rotateY(360deg);
+  transform-style: preserve-3d;
+  position: relative;
+  z-index: -1;
+}
+
+/* Red heart when removeLife() */
+.redLife {
+  z-index: -1;
+  position: relative;
+  -webkit-filter: hue-rotate(150deg);
 }

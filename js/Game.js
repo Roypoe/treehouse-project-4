@@ -15,11 +15,11 @@ class Game {
    */
   createPhrases() {
     return [
-      "Life is like a box of Chocolates",
-      "There is no trying",
-      "May the force be with you",
-      "You have to see the matrix for yourself",
-      "Hello"
+      "First things first",
+      "Still waters run deep",
+      "Strike while the iron is hot",
+      "Practice makes perfect",
+      "Look before you leap"
     ];
   }
 
@@ -36,7 +36,7 @@ class Game {
    * Begins game by selecting a random phrase and displaying it to user
    */
   startGame() {
-    $("#overlay").hide();
+    $("#overlay").fadeOut("slow");
     this.activePhrase = this.getRandomPhrase();
     phrase = new Phrase(this.activePhrase);
     phrase.addPhraseToDisplay();
@@ -65,8 +65,14 @@ class Game {
     for (let i = 0; i < this.missed; i++) {
       $(".tries img")
         .eq(i)
-        .attr("src", "images/lostHeart.png");
+        .addClass("redLife")
+        .delay(400)
+        .queue(function(next) {
+          $(this).attr("src", "images/lostHeart.png");
+          next();
+        });
     }
+
     if (this.missed === 5) {
       this.gameOver("lost");
     }
@@ -74,10 +80,10 @@ class Game {
 
   /**
    * Displays game over message
-   * @param {boolean} gameWon - Whether or not the user won the game
+   * @param {string} gameWon - Whether or not the user won the game
    */
   gameOver(gameWon) {
-    $("#overlay").show();
+    $("#overlay").fadeIn("slow");
     if (gameWon === "lost") {
       $("#overlay h1").text("You lose");
       $("#overlay")
@@ -93,7 +99,7 @@ class Game {
 
   /**
    * Handles onscreen keyboard button clicks
-   * @param (HTMLButtonElement) button - The clicked button element
+   * @param (content) button - The clicked button element
    */
   handleInteraction(content) {
     let button = $(`#qwerty button:contains('${content}')`);

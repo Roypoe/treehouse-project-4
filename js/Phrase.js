@@ -13,7 +13,7 @@ class Phrase {
   addPhraseToDisplay() {
     let html = ``;
     for (let i = 0; i < this.phrase.length; i++) {
-      if ((this.phrase[i] === " ")) {
+      if (this.phrase[i] === " ") {
         html += `<li class="space"> </li>`;
       } else {
         html += `<li class="hide letter ${this.phrase[i]}">${
@@ -21,27 +21,28 @@ class Phrase {
         }</li>`;
       }
     }
-    $('#phrase ul').append(html);
+    $("#phrase ul").append(html);
   }
 
   /**
-  * Checks if passed letter is in phrase
-  * @param (string) letter - Letter to check
-  */
+   * Checks if passed letter is in phrase
+   * @param (string) letter - Letter to check
+   */
   checkLetter(letter) {
-    if (this.phrase.indexOf(letter) != -1){
-    return true;
-  } else {
-    return false;
-  }
+    if (this.phrase.indexOf(letter) != -1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
-  * Displays passed letter on screen after a match is found
-  * @param (string) letter - Letter to display
-  */
+   * Displays passed letter on screen after a match is found
+   * @param (string) letter - Letter to display
+   */
   showMatchedLetter(letter) {
-      $(`.${letter}`).addClass('show').removeClass('hide');
-  };
-
+    $(`.${letter}`)
+      .addClass("show spin")
+      .removeClass("hide");
+  }
 }

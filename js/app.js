@@ -10,6 +10,9 @@ let phrase = null;
 $("#btn__reset").on("click", () => {
   // Remove old phrase
   $("#phrase ul li").remove();
+  $("#overlay")
+    .removeClass()
+    .addClass("start");
 
   // Reset button states
   $("#qwerty button")
@@ -18,7 +21,9 @@ $("#btn__reset").on("click", () => {
     .prop("disabled", false);
 
   // Reset lifes
-  $(".tries img").attr("src", "images/liveHeart.png");
+  $(".tries img")
+    .attr("src", "images/liveHeart.png")
+    .removeClass("redLife");
 
   // Create new Game object
   game = new Game();
@@ -43,7 +48,7 @@ $(document).keypress(function(e) {
     }
   } else {
     // Get letters and call handler
-    // Check if letter was already chosen -> prevent from unwanted action like removeLife
+    // Check if letter was already chosen -> prevent from unwanted action like removeLife()
     let disabledLetters = [];
     let button = String.fromCharCode(e.which);
 
